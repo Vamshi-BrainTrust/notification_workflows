@@ -1,0 +1,17 @@
+
+_export:
+    td:
+        database: raw_jha
+
++query:
+    td>:
+    query: "SELECT COUNT(1) record_count FROM ln_stop_chk_detail WHERE time > ${moment().startOf('day').format('x')}"
+    store_last_results: true
+
++check_count:
+ if>: ${td.last_results.record_count == 0}
+ _do:
+    mail>:
+        data: No new records since last import for raw_jha.ln_stop_chk_detail !!
+    subject: Records Alert - No Records Import for raw_jha.ln_stop_chk_detail
+    to: [vamshi@braintrust.partners, mark@braintrust.partners]

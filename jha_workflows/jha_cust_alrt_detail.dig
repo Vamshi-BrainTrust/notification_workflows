@@ -1,4 +1,3 @@
-cust_alrt_detail
 _export:
     td:
         database: raw_jha
